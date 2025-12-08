@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:main/pages/document_reader_page.dart';
 import 'package:main/pages/home_page.dart';
+import 'package:main/pages/landing_page.dart';
 import 'package:main/pages/scanner_page.dart';
 import 'package:main/pages/setting_page.dart';
 import 'package:main/pages/library_page.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: LandingPage(),
       debugShowCheckedModeBanner: false,
       routes: {
         "/home_page": (context) => const HomePage(),
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         "/scanner_page" :(context) => const ScannerPage(),
         "/library_page" :(context) => const LibraryPage(),
         "/setting_page" :(context) => const SettingsPage(),
+        "/landing_page" :(context) => const LandingPage(),
       },
     );
   }
