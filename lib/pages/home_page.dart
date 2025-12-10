@@ -27,6 +27,11 @@ class HomePage extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         debugPrint("go to document reader!!");
+                        Navigator.pushNamed(
+                          context,
+                          "/landing_page",
+                          arguments: 1,   
+                        );
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -52,8 +57,13 @@ class HomePage extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  debugPrint("go to scanner page!");
-                },
+                        debugPrint("go to scanner!!");
+                        Navigator.pushNamed(
+                          context,
+                          "/landing_page",
+                          arguments: 2,   
+                        );
+                      },
                 child: Container(decoration: BoxDecoration(
                     color: AppColors.accentGrey
                   ),

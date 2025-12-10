@@ -4,7 +4,7 @@ import 'package:main/pages/document_reader_page.dart';
 import 'package:main/pages/home_page.dart';
 import 'package:main/pages/library_page.dart';
 import 'package:main/pages/scanner_page.dart';
-import 'package:main/pages/setting_page.dart';
+
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -14,7 +14,20 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  int _selectedIndex = 0;
+   int selectedIndex = 0;
+   bool initialIndex = false;
+
+   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!initialIndex) {
+      final args = ModalRoute.of(context)?.settings.arguments;
+      if (args is int) {
+        selectedIndex = args;
+      }
+    initialIndex = true;
+    }
+  }
 
   final List<Widget> _pages = [
     HomePage(),
@@ -25,7 +38,7 @@ class _LandingPageState extends State<LandingPage> {
 
   void _onNavTap(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
@@ -50,11 +63,11 @@ class _LandingPageState extends State<LandingPage> {
         backgroundColor: AppColors.accentGrey
         ),
 
-      body: _pages[_selectedIndex],
+      body: _pages[selectedIndex],
 
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
+        currentIndex: selectedIndex,
         onTap: _onNavTap,
         backgroundColor: AppColors.accentGrey,
         selectedItemColor: Colors.black,
